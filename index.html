@@ -1,0 +1,400 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Emindful_Education offers online Robotics and Artificial Intelligence tuition and crash courses for ICSE and CBSE Classes 9 and 10.">
+  <title>Emindful_Education | Robotics & AI</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <nav class="navbar container">
+      <a href="#home" class="logo">
+        <span class="logo-icon">✦</span>
+        Emindful<span>_Education</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle"
+        aria-label="Toggle navigation"
+        aria-expanded="false">☰</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#benefits">Why Us</a></li>
+        <li><a href="#faq">FAQs</a></li>
+        <li><a href="#contact" class="nav-cta">Enrol Now</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="eyebrow">Online Learning | ICSE & CBSE</span>
+          <h1>
+            Learn Robotics & AI.
+            <span>Build Your Future.</span>
+          </h1>
+          <p>
+            Interactive online tuition and focused crash courses
+            for Classes 9 and 10. Build conceptual understanding,
+            practical skills and confidence in technology.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#courses" class="btn btn-primary">
+              Explore Courses →
+            </a>
+            <a href="#contact" class="btn btn-outline">
+              Enquire Now
+            </a>
+          </div>
+
+          <div class="hero-tags">
+            <span>✓ Live Online Classes</span>
+            <span>✓ Practical Activities</span>
+            <span>✓ Exam Preparation</span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="robot-face">
+            <div class="robot-antenna"></div>
+            <div class="robot-eyes">
+              <span></span><span></span>
+            </div>
+            <div class="robot-mouth"></div>
+          </div>
+          <div class="floating-label label-one">🤖 Robotics</div>
+          <div class="floating-label label-two">🧠 Artificial Intelligence</div>
+          <div class="floating-label label-three">💻 Coding</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">About Emindful_Education</span>
+          <h2>Technology Education Made Meaningful</h2>
+          <p>
+            We help school students understand Robotics and
+            Artificial Intelligence through clear explanations,
+            guided activities and structured learning.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h3>Concept-Based Learning</h3>
+            <p>Understand important concepts rather than simply memorising answers.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">🧪</div>
+            <h3>Hands-On Activities</h3>
+            <p>Explore coding exercises, AI demonstrations and virtual robotics projects.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">📚</div>
+            <h3>Board-Focused Support</h3>
+            <p>Learning plans can be aligned with the student's school syllabus.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Courses -->
+    <section id="courses" class="section courses-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Our Programmes</span>
+          <h2>Choose Your Learning Path</h2>
+          <p>
+            Explore regular online tuition and revision-focused
+            crash courses for ICSE and CBSE students.
+          </p>
+        </div>
+
+        <div class="filters">
+          <select id="boardFilter" aria-label="Filter by board">
+            <option value="all">All Boards</option>
+            <option value="ICSE">ICSE</option>
+            <option value="CBSE">CBSE</option>
+          </select>
+
+          <select id="classFilter" aria-label="Filter by class">
+            <option value="all">All Classes</option>
+            <option value="9">Class 9</option>
+            <option value="10">Class 10</option>
+          </select>
+
+          <select id="typeFilter" aria-label="Filter by course type">
+            <option value="all">All Programmes</option>
+            <option value="Tuition">Regular Tuition</option>
+            <option value="Crash Course">Crash Courses</option>
+          </select>
+        </div>
+
+        <div class="course-grid" id="courseGrid">
+          <!-- Course cards inserted by JavaScript -->
+        </div>
+        <p id="noCourses" class="empty-state" hidden>
+          No courses match these filters.
+        </p>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="benefits" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Why Choose Us</span>
+          <h2>Learn, Practise and Grow</h2>
+        </div>
+
+        <div class="benefits-grid">
+          <div class="benefit-item">
+            <span>01</span>
+            <h3>Live Teacher Guidance</h3>
+            <p>Learn through interactive online sessions and guided explanations.</p>
+          </div>
+
+          <div class="benefit-item">
+            <span>02</span>
+            <h3>Regular Practice</h3>
+            <p>Strengthen understanding with exercises, quizzes and assignments.</p>
+          </div>
+
+          <div class="benefit-item">
+            <span>03</span>
+            <h3>Project-Based Learning</h3>
+            <p>Connect classroom concepts with real-world technology applications.</p>
+          </div>
+
+          <div class="benefit-item">
+            <span>04</span>
+            <h3>Focused Revision</h3>
+            <p>Prepare with topic revision, doubt-clearing and practice questions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Learning Process -->
+    <section class="section process-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Getting Started</span>
+          <h2>Start Learning in Three Steps</h2>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Choose a Course</h3>
+            <p>Select your board, class and preferred programme.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>Send an Enquiry</h3>
+            <p>Share your details and ask about available batches.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>Join Online</h3>
+            <p>Receive joining information after enrolment is confirmed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <section id="faq" class="section">
+      <div class="container faq-container">
+        <div class="section-heading">
+          <span class="eyebrow">Frequently Asked Questions</span>
+          <h2>Questions? We Have Answers.</h2>
+        </div>
+
+        <details class="faq-item">
+          <summary>Who can enrol in these courses?</summary>
+          <p>
+            Students in Classes 9 and 10 following ICSE or CBSE
+            can enquire about suitable programmes.
+          </p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Are classes conducted online?</summary>
+          <p>
+            Yes. The programmes are designed for online learning.
+            Class platform and timings are shared during enrolment.
+          </p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What is the difference between tuition and a crash course?</summary>
+          <p>
+            Regular tuition provides ongoing concept development
+            and practice. Crash courses focus on revision,
+            important topics and exam preparation.
+          </p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Do students need a robotics kit?</summary>
+          <p>
+            Some activities can be completed using virtual tools.
+            Any additional equipment requirements will be
+            communicated for the selected programme.
+          </p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How can I enquire about fees and batches?</summary>
+          <p>
+            Complete the enquiry form below to send your details
+            through WhatsApp.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Enquiry Form -->
+    <section id="contact" class="section contact-section">
+      <div class="container contact-grid">
+        <div class="contact-info">
+          <span class="eyebrow">Admissions & Enquiries</span>
+          <h2>Ready to Begin Your Learning Journey?</h2>
+          <p>
+            Tell us what you would like to learn.
+            We will help you explore suitable courses,
+            batch details and enrolment options.
+          </p>
+
+          <div class="contact-highlight">
+            <h3>Enquire About</h3>
+            <p>✓ Course availability</p>
+            <p>✓ Batch timings</p>
+            <p>✓ Fees and enrolment</p>
+            <p>✓ Course content</p>
+          </div>
+        </div>
+
+        <form id="enquiryForm" class="enquiry-form">
+          <h3>Course Enquiry Form</h3>
+
+          <label for="studentName">Student Name *</label>
+          <input type="text" id="studentName" required
+            maxlength="80" placeholder="Enter student's name">
+
+          <label for="parentName">Parent / Guardian Name *</label>
+          <input type="text" id="parentName" required
+            maxlength="80" placeholder="Enter parent or guardian name">
+
+          <label for="phone">Parent / Guardian Mobile Number *</label>
+          <input type="tel" id="phone" required
+            pattern="[0-9]{10}" maxlength="10"
+            title="Enter a 10-digit Indian mobile number"
+            placeholder="10-digit mobile number">
+
+          <label for="email">Email Address (Optional)</label>
+          <input type="email" id="email"
+            placeholder="Enter email address">
+
+          <div class="form-row">
+            <div>
+              <label for="board">Board *</label>
+              <select id="board" required>
+                <option value="">Select Board</option>
+                <option value="ICSE">ICSE</option>
+                <option value="CBSE">CBSE</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="studentClass">Class *</label>
+              <select id="studentClass" required>
+                <option value="">Select Class</option>
+                <option value="9">Class 9</option>
+                <option value="10">Class 10</option>
+              </select>
+            </div>
+          </div>
+
+          <label for="course">Interested Course *</label>
+          <select id="course" required>
+            <option value="">Select Course</option>
+            <option value="Robotics Tuition">Robotics Tuition</option>
+            <option value="AI Tuition">AI Tuition</option>
+            <option value="Robotics Crash Course">Robotics Crash Course</option>
+            <option value="AI Crash Course">AI Crash Course</option>
+          </select>
+
+          <label for="message">Additional Questions</label>
+          <textarea id="message" rows="4"
+            maxlength="500"
+            placeholder="Tell us about your learning requirements"></textarea>
+
+          <label class="consent-label">
+            <input type="checkbox" id="consent" required>
+            <span>
+              I am the parent/guardian or have their permission
+              to share these details for this enquiry.
+            </span>
+          </label>
+
+          <button type="submit" class="btn btn-primary full-width">
+            Send Enquiry on WhatsApp →
+          </button>
+
+          <p class="form-note">
+            This form opens WhatsApp with your enquiry.
+            Please review the message before sending.
+          </p>
+          <p id="formStatus" class="form-status" role="status"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div>
+        <h3>Emindful_Education</h3>
+        <p>Empowering young minds through Robotics and AI.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#courses">Courses</a>
+        <a href="#contact">Enquire</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> Emindful_Education. All rights reserved.</p>
+      <p>Independent educational learning platform.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
