@@ -1,321 +1,436 @@
 
-// ==========================================
-// EMINDFUL_EDUCATION WEBSITE JAVASCRIPT
-// ==========================================
+// ===========================================
+// EMINDFUL_EDUCATION - MAIN JAVASCRIPT
+// ===========================================
 
-// IMPORTANT:
-// Enter your business WhatsApp number below.
-// Example: "919876543210"
-// Include country code 91 without + or spaces.
+// FUTURE BACKEND CONFIGURATION
+// These are placeholders, not active endpoints.
 
-const WHATSAPP_NUMBER = "919062156885";
+const CONFIG = {
+  apiBaseUrl: "",
+  whatsappNumber: "",
+  backendEnabled: false
+};
 
-// ==========================================
-// COURSE INFORMATION
-// ==========================================
+// ===========================================
+// PROGRAMME DATA
+// ===========================================
 
-// These are sample course offerings.
-// Edit descriptions to match your teaching plan.
-// Courses are not claims about prescribed syllabuses.
-
-const courses = [
+const programmes = [
   {
-    title: "Robotics Foundation",
-    board: "ICSE",
-    classLevel: "9",
-    type: "Tuition",
-    icon: "🤖",
+    id: "tuition",
+    title: "Online Tuition",
+    icon: "🎓",
     description:
-      "Introduction to robotics, sensors, logic, automation and basic programming."
+      "Robotics and AI theory, Python, 10 Tinkercad projects, AI Project Cycle and assignments.",
+    fee: "₹2,500/month",
+    advance: "₹5,000 advance for 2 months",
+    boards: ["ICSE", "CBSE"],
+    classes: ["9", "10"],
+    section: "tuition"
   },
   {
-    title: "Artificial Intelligence Foundation",
-    board: "ICSE",
-    classLevel: "9",
-    type: "Tuition",
-    icon: "🧠",
-    description:
-      "Explore AI concepts, applications, data and introductory machine learning ideas."
-  },
-  {
-    title: "Robotics & AI Revision",
-    board: "ICSE",
-    classLevel: "10",
-    type: "Crash Course",
+    id: "crash",
+    title: "Crash Course",
     icon: "🚀",
     description:
-      "Focused revision, concept clarification, practice questions and guided activities."
+      "Two-month intensive programme with theory, advanced Python, Tinkercad, AI Project Cycle and assignments.",
+    fee: "₹6,000/month",
+    advance: "₹12,000 advance",
+    boards: ["ICSE", "CBSE"],
+    classes: ["9", "10"],
+    section: "crash"
   },
   {
-    title: "Artificial Intelligence",
-    board: "CBSE",
-    classLevel: "9",
-    type: "Tuition",
-    icon: "💡",
+    id: "mock",
+    title: "Mock Test Programme",
+    icon: "📝",
     description:
-      "Develop AI awareness, computational thinking, data literacy and practical skills."
+      "10 individual mock-test slots with planned answer uploads and corrected-script access.",
+    fee: "₹1,000/test",
+    advance: "Advance payment per test",
+    boards: ["ICSE", "CBSE"],
+    classes: ["9", "10"],
+    section: "tests"
   },
   {
-    title: "Artificial Intelligence",
-    board: "CBSE",
-    classLevel: "10",
-    type: "Tuition",
-    icon: "💻",
-    description:
-      "Structured AI learning with guided practice, projects and exam-oriented support."
-  },
-  {
-    title: "AI Exam Preparation",
-    board: "CBSE",
-    classLevel: "10",
-    type: "Crash Course",
+    id: "materials",
+    title: "Study Material",
     icon: "📚",
     description:
-      "Targeted revision, important concepts, practice questions and doubt-clearing."
-  },
-  {
-    title: "Robotics & Coding",
-    board: "CBSE",
-    classLevel: "9",
-    type: "Tuition",
-    icon: "⚙️",
-    description:
-      "Explore robotics fundamentals, coding logic, simulations and problem-solving."
-  },
-  {
-    title: "Robotics Crash Course",
-    board: "CBSE",
-    classLevel: "10",
-    type: "Crash Course",
-    icon: "🔧",
-    description:
-      "Revise robotics principles, programming fundamentals and practical applications."
+      "Learning notes, Python practice, robotics resources, AI projects and revision material.",
+    fee: "Package pricing pending",
+    advance: "Payment-based access",
+    boards: ["ICSE", "CBSE"],
+    classes: ["9", "10"],
+    section: "materials"
   }
 ];
 
-// ==========================================
-// MOBILE NAVIGATION
-// ==========================================
+// ===========================================
+// NAVIGATION
+// ===========================================
 
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
+const menuButton = document.getElementById("menuButton");
+const mainNav = document.getElementById("mainNav");
 
-menuToggle.addEventListener("click", () => {
-  const isOpen = navLinks.classList.toggle("active");
-
-  menuToggle.setAttribute("aria-expanded", String(isOpen));
-  menuToggle.textContent = isOpen ? "✕" : "☰";
+menuButton.addEventListener("click", () => {
+  const opened = mainNav.classList.toggle("open");
+  menuButton.setAttribute("aria-expanded", String(opened));
+  menuButton.textContent = opened ? "✕" : "☰";
 });
 
-document.querySelectorAll(".nav-links a").forEach(link => {
+mainNav.querySelectorAll("a").forEach(link => {
   link.addEventListener("click", () => {
-    navLinks.classList.remove("active");
-    menuToggle.setAttribute("aria-expanded", "false");
-    menuToggle.textContent = "☰";
+    mainNav.classList.remove("open");
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.textContent = "☰";
   });
 });
 
-// ==========================================
-// COURSE FILTERING
-// ==========================================
+// ===========================================
+// COURSE FILTERS
+// ===========================================
 
 const boardFilter = document.getElementById("boardFilter");
 const classFilter = document.getElementById("classFilter");
-const typeFilter = document.getElementById("typeFilter");
+const programmeGrid = document.getElementById("programmeGrid");
 
-const courseGrid = document.getElementById("courseGrid");
-const noCourses = document.getElementById("noCourses");
+function makeElement(tag, className, text) {
+  const element = document.createElement(tag);
+  if (className) element.className = className;
+  if (text !== undefined) element.textContent = text;
+  return element;
+}
 
-function renderCourses() {
-  const selectedBoard = boardFilter.value;
-  const selectedClass = classFilter.value;
-  const selectedType = typeFilter.value;
+function renderProgrammes() {
+  const board = boardFilter.value;
+  const classLevel = classFilter.value;
 
-  const filteredCourses = courses.filter(course => {
-    const boardMatches =
-      selectedBoard === "all" ||
-      course.board === selectedBoard;
+  programmeGrid.replaceChildren();
 
-    const classMatches =
-      selectedClass === "all" ||
-      course.classLevel === selectedClass;
-
-    const typeMatches =
-      selectedType === "all" ||
-      course.type === selectedType;
-
-    return boardMatches && classMatches && typeMatches;
+  const filtered = programmes.filter(item => {
+    const boardMatch =
+      board === "all" || item.boards.includes(board);
+    const classMatch =
+      classLevel === "all" || item.classes.includes(classLevel);
+    return boardMatch && classMatch;
   });
 
-  courseGrid.innerHTML = "";
-  noCourses.hidden = filteredCourses.length !== 0;
+  filtered.forEach(item => {
+    const card = makeElement("article", "programme-card");
 
-  filteredCourses.forEach(course => {
-    const card = document.createElement("article");
-    card.className = "course-card";
+    const icon = makeElement("div", "programme-icon", item.icon);
+    const heading = makeElement("h3", "", item.title);
+    const description = makeElement("p", "", item.description);
 
-    const banner = document.createElement("div");
-    banner.className = "course-banner";
-    banner.textContent = course.icon;
+    const price = makeElement("strong", "", item.fee);
+    const advance = makeElement("p", "", item.advance);
 
-    const body = document.createElement("div");
-    body.className = "course-body";
+    const meta = makeElement("div", "card-meta");
+    const boardText =
+      board === "all" ? "ICSE & CBSE" : board;
+    const classText =
+      classLevel === "all"
+        ? "Classes 9 & 10"
+        : `Class ${classLevel}`;
 
-    const badge = document.createElement("span");
-    badge.className = "course-badge";
-    badge.textContent = course.type;
+    meta.append(
+      makeElement("span", "", boardText),
+      makeElement("span", "", classText)
+    );
 
-    const heading = document.createElement("h3");
-    heading.textContent = course.title;
+    const link = makeElement("a", "button primary", "View Details →");
+    link.href = `#${item.section}`;
 
-    const description = document.createElement("p");
-    description.textContent = course.description;
+    card.append(icon, heading, description, meta, price, advance, link);
+    programmeGrid.appendChild(card);
+  });
+}
 
-    const meta = document.createElement("div");
-    meta.className = "course-meta";
+boardFilter.addEventListener("change", renderProgrammes);
+classFilter.addEventListener("change", renderProgrammes);
 
-    const boardTag = document.createElement("span");
-    boardTag.textContent = course.board;
+renderProgrammes();
 
-    const classTag = document.createElement("span");
-    classTag.textContent = `Class ${course.classLevel}`;
+// ===========================================
+// MOCK TEST DATA
+// ===========================================
 
-    meta.append(boardTag, classTag);
+// Mock-test titles are placeholders.
+// Question papers and corrected scripts will
+// be stored securely in the backend later.
 
-    const button = document.createElement("button");
+const mockTests = Array.from({ length: 10 }, (_, index) => ({
+  id: index + 1,
+  title: `Mock Test ${index + 1}`,
+  price: 1000,
+  paymentStatus: "not_verified",
+  paperAvailable: false,
+  submissionAvailable: false,
+  correctionAvailable: false
+}));
+
+let activeTest = null;
+
+const testGrid = document.getElementById("testGrid");
+const selectedTest = document.getElementById("selectedTest");
+const testStatus = document.getElementById("testStatus");
+const paperButton = document.getElementById("paperButton");
+const correctedButton = document.getElementById("correctedButton");
+const answerUpload = document.getElementById("answerUpload");
+
+function renderMockTests() {
+  testGrid.replaceChildren();
+
+  mockTests.forEach(test => {
+    const card = makeElement("article", "test-card");
+
+    card.append(
+      makeElement("div", "programme-icon", "📝"),
+      makeElement("h3", "", test.title),
+      makeElement("p", "", "₹1,000 • Advance payment")
+    );
+
+    const button = makeElement("button", "", "View Test");
     button.type = "button";
-    button.className = "btn btn-primary";
-    button.textContent = "Enquire About Course →";
 
     button.addEventListener("click", () => {
-      selectCourse(course);
+      selectMockTest(test.id);
     });
 
-    body.append(badge, heading, description, meta, button);
-    card.append(banner, body);
-    courseGrid.appendChild(card);
+    card.appendChild(button);
+    testGrid.appendChild(card);
   });
 }
 
-boardFilter.addEventListener("change", renderCourses);
-classFilter.addEventListener("change", renderCourses);
-typeFilter.addEventListener("change", renderCourses);
+function selectMockTest(id) {
+  activeTest = mockTests.find(test => test.id === id);
 
-// ==========================================
+  if (!activeTest) return;
+
+  selectedTest.textContent =
+    `${activeTest.title} • Fee: ₹1,000 • Payment required`;
+
+  // Never unlock files using only a front-end flag.
+  paperButton.disabled = true;
+  correctedButton.disabled = true;
+  answerUpload.disabled = true;
+
+  testStatus.textContent =
+    "This is a preview. Student login, verified payment, " +
+    "question-paper download, answer submission and " +
+    "corrected-script download require backend integration.";
+
+  document.getElementById("testWorkspace")
+    .scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+renderMockTests();
+
+// ===========================================
+// STUDY MATERIAL LIBRARY
+// ===========================================
+
+const materials = [
+  {
+    title: "Robotics Theory Notes",
+    icon: "🤖",
+    description: "Robotics fundamentals, sensors and applications."
+  },
+  {
+    title: "Artificial Intelligence Notes",
+    icon: "🧠",
+    description: "AI fundamentals, concepts and applications."
+  },
+  {
+    title: "Python Programming",
+    icon: "🐍",
+    description: "Programming exercises and coding practice."
+  },
+  {
+    title: "Tinkercad Projects",
+    icon: "⚙️",
+    description: "Project guides and simulation activities."
+  },
+  {
+    title: "AI Project Cycle",
+    icon: "🔄",
+    description: "Guided project-cycle learning resources."
+  },
+  {
+    title: "Assignments & Revision",
+    icon: "📑",
+    description: "Practice worksheets and revision resources."
+  }
+];
+
+const materialGrid = document.getElementById("materialGrid");
+
+function renderMaterials() {
+  materialGrid.replaceChildren();
+
+  materials.forEach(material => {
+    const card = makeElement("article", "material-card");
+
+    card.append(
+      makeElement("div", "material-icon", material.icon),
+      makeElement("h3", "", material.title),
+      makeElement("p", "", material.description),
+      makeElement("span", "tag", "🔒 Paid Resource")
+    );
+
+    const note = makeElement(
+      "p", "",
+      "Available after package purchase and verification."
+    );
+
+    card.appendChild(note);
+    materialGrid.appendChild(card);
+  });
+}
+
+renderMaterials();
+
+// ===========================================
 // COURSE ENQUIRY BUTTONS
-// ==========================================
+// ===========================================
 
-function selectCourse(course) {
-  document.getElementById("board").value = course.board;
-  document.getElementById("studentClass").value =
-    course.classLevel;
+document.querySelectorAll("[data-enquire]").forEach(button => {
+  button.addEventListener("click", () => {
+    const programme = button.dataset.enquire;
 
-  const courseDropdown = document.getElementById("course");
+    document.getElementById("programme").value = programme;
 
-  const isAI = /Artificial Intelligence|AI/i.test(course.title);
-  const subject = isAI ? "AI" : "Robotics";
-
-  const courseType =
-    course.type === "Crash Course"
-      ? "Crash Course"
-      : "Tuition";
-
-  courseDropdown.value = `${subject} ${courseType}`;
-
-  document.getElementById("contact").scrollIntoView({
-    behavior: "smooth"
+    document.getElementById("contact")
+      .scrollIntoView({ behavior: "smooth" });
   });
-}
+});
 
-// ==========================================
-// WHATSAPP ENQUIRY FORM
-// ==========================================
+// ===========================================
+// ENQUIRY FORM
+// ===========================================
 
 const enquiryForm = document.getElementById("enquiryForm");
-const formStatus = document.getElementById("formStatus");
+const enquiryStatus = document.getElementById("enquiryStatus");
 
 enquiryForm.addEventListener("submit", event => {
   event.preventDefault();
 
-  if (!enquiryForm.reportValidity()) {
-    return;
-  }
+  if (!enquiryForm.reportValidity()) return;
 
-  // Validate configured WhatsApp number.
-  if (!/^[1-9]\d{9,14}$/.test(WHATSAPP_NUMBER)) {
-    formStatus.textContent =
-      "Business WhatsApp number is not configured yet.";
-    return;
-  }
+  const formData = new FormData(enquiryForm);
 
-  const studentName =
-    document.getElementById("studentName").value.trim();
+  const enquiry = {
+    studentName: String(formData.get("studentName")).trim(),
+    parentName: String(formData.get("parentName")).trim(),
+    email: String(formData.get("email")).trim(),
+    phone: String(formData.get("phone")).trim(),
+    board: String(formData.get("board")),
+    classLevel: String(formData.get("studentClass")),
+    programme: String(formData.get("programme")),
+    message: String(formData.get("message") || "").trim()
+  };
 
-  const parentName =
-    document.getElementById("parentName").value.trim();
-
-  const phone =
-    document.getElementById("phone").value.trim();
-
-  const email =
-    document.getElementById("email").value.trim();
-
-  const board =
-    document.getElementById("board").value;
-
-  const studentClass =
-    document.getElementById("studentClass").value;
-
-  const course =
-    document.getElementById("course").value;
-
-  const message =
-    document.getElementById("message").value.trim();
-
-  if (!/^[6-9]\d{9}$/.test(phone)) {
-    formStatus.textContent =
+  if (!/^[6-9]\d{9}$/.test(enquiry.phone)) {
+    enquiryStatus.textContent =
       "Please enter a valid 10-digit Indian mobile number.";
     return;
   }
 
-  const whatsappMessage = [
-    "Hello Emindful_Education!",
+  const message = [
+    "Hello Emindful_Education,",
+    "I would like to enquire about a programme.",
     "",
-    "I would like to enquire about a course.",
+    `Student: ${enquiry.studentName}`,
+    `Parent/Guardian: ${enquiry.parentName}`,
+    `Email: ${enquiry.email}`,
+    `Phone: ${enquiry.phone}`,
+    `Board: ${enquiry.board}`,
+    `Class: ${enquiry.classLevel}`,
+    `Programme: ${enquiry.programme}`,
+    `Questions: ${enquiry.message || "None"}`,
     "",
-    `Student Name: ${studentName}`,
-    `Parent/Guardian: ${parentName}`,
-    `Mobile: ${phone}`,
-    `Email: ${email || "Not provided"}`,
-    `Board: ${board}`,
-    `Class: ${studentClass}`,
-    `Interested Course: ${course}`,
-    `Questions: ${message || "None"}`,
-    "",
-    "Please share the course fees, timings and enrolment details."
+    "Please share the batch and enrolment details."
   ].join("\n");
 
-  const whatsappURL =
-    `https://wa.me/${WHATSAPP_NUMBER}?text=${
-      encodeURIComponent(whatsappMessage)
-    }`;
+  // Optional WhatsApp enquiry once a number is provided.
+  if (/^[1-9]\d{9,14}$/.test(CONFIG.whatsappNumber)) {
+    const url =
+      `https://wa.me/${CONFIG.whatsappNumber}?text=` +
+      encodeURIComponent(message);
 
-  formStatus.textContent =
-    "Opening WhatsApp. Please review and send your message.";
+    enquiryStatus.textContent =
+      "Opening WhatsApp. Please review and send your enquiry.";
 
-  // Open in the current tab to avoid popup blockers.
-  window.location.href = whatsappURL;
+    window.open(url, "_blank", "noopener,noreferrer");
+    return;
+  }
+
+  // No backend and no WhatsApp configured.
+  // Allow the visitor to copy the enquiry.
+  // No personal information is stored in the browser.
+
+  enquiryStatus.replaceChildren();
+
+  const text = makeElement(
+    "p", "",
+    "Online submission is not active yet. " +
+    "You can copy your enquiry below."
+  );
+
+  const copyButton = makeElement(
+    "button", "button secondary", "Copy Enquiry"
+  );
+  copyButton.type = "button";
+
+  copyButton.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(message);
+      copyButton.textContent = "Copied!";
+    } catch {
+      enquiryStatus.appendChild(
+        makeElement(
+          "p", "",
+          "Clipboard unavailable. Please use the form details " +
+          "to contact us when contact information is published."
+        )
+      );
+    }
+  });
+
+  enquiryStatus.append(text, copyButton);
 });
 
-// ==========================================
-// FOOTER YEAR
-// ==========================================
+// ===========================================
+// FOOTER
+// ===========================================
 
-document.getElementById("year").textContent =
+document.getElementById("currentYear").textContent =
   new Date().getFullYear();
 
-// ==========================================
-// INITIALISE WEBSITE
-// ==========================================
+// ===========================================
+// FUTURE BACKEND INTEGRATION PLAN
+// ===========================================
 
-renderCourses();
+// Later, connect the frontend to secure API routes:
+//
+// POST /api/enquiries
+// POST /api/payments/create-order
+// POST /api/payments/verify
+// GET  /api/student/courses
+// GET  /api/student/tests
+// GET  /api/tests/:id/download
+// POST /api/tests/:id/submissions
+// GET  /api/tests/:id/correction
+// GET  /api/materials/:id/download
+//
+// Authentication and payment verification must
+// happen on the server.
+//
+// Never store payment secret keys in this file.
+// Never rely on JavaScript alone to protect files.
+//
+// n8n can automate enquiry notifications,
+// enrolment follow-ups, teacher notifications,
+// and correction-ready notifications.

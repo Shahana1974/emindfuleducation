@@ -3,398 +3,457 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Emindful_Education offers online Robotics and Artificial Intelligence tuition and crash courses for ICSE and CBSE Classes 9 and 10.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Emindful_Education - Robotics and AI learning for ICSE and CBSE Classes 9 and 10.">
   <title>Emindful_Education | Robotics & AI</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="header">
-    <nav class="navbar container">
-      <a href="#home" class="logo">
-        <span class="logo-icon">✦</span>
-        Emindful<span>_Education</span>
-      </a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="#home">
+      <span class="logo-holder" id="logoHolder">
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <rect x="5" y="8" width="38" height="32" rx="10"
+                fill="#176b52"/>
+          <circle cx="17" cy="23" r="4" fill="white"/>
+          <circle cx="31" cy="23" r="4" fill="white"/>
+          <path d="M17 32 Q24 37 31 32" fill="none"
+                stroke="white" stroke-width="2.5"
+                stroke-linecap="round"/>
+          <path d="M24 8 V3" stroke="#176b52"
+                stroke-width="3"/>
+          <circle cx="24" cy="3" r="3" fill="#e7a83e"/>
+        </svg>
+      </span>
+      <span>Emindful<span class="brand-accent">_Education</span></span>
+    </a>
 
-      <button class="menu-toggle" id="menuToggle"
-        aria-label="Toggle navigation"
-        aria-expanded="false">☰</button>
+    <button class="menu-button" id="menuButton"
+            aria-label="Toggle menu" aria-expanded="false">
+      ☰
+    </button>
 
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#courses">Courses</a></li>
-        <li><a href="#benefits">Why Us</a></li>
-        <li><a href="#faq">FAQs</a></li>
-        <li><a href="#contact" class="nav-cta">Enrol Now</a></li>
-      </ul>
+    <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#courses">Courses</a>
+      <a href="#tests">Mock Tests</a>
+      <a href="#materials">Study Material</a>
+      <a href="#dashboard">My Learning</a>
+      <a href="#contact" class="nav-button">Enquire Now</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <main>
-
-    <!-- Hero -->
-    <section id="home" class="hero">
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <span class="eyebrow">Online Learning | ICSE & CBSE</span>
-          <h1>
-            Learn Robotics & AI.
-            <span>Build Your Future.</span>
-          </h1>
-          <p>
-            Interactive online tuition and focused crash courses
-            for Classes 9 and 10. Build conceptual understanding,
-            practical skills and confidence in technology.
-          </p>
-
-          <div class="hero-buttons">
-            <a href="#courses" class="btn btn-primary">
-              Explore Courses →
-            </a>
-            <a href="#contact" class="btn btn-outline">
-              Enquire Now
-            </a>
-          </div>
-
-          <div class="hero-tags">
-            <span>✓ Live Online Classes</span>
-            <span>✓ Practical Activities</span>
-            <span>✓ Exam Preparation</span>
-          </div>
+<main>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="container hero-layout">
+      <div>
+        <p class="eyebrow">LEARN • CREATE • INNOVATE</p>
+        <h1>Every student can learn <em>Robotics & AI.</em></h1>
+        <p class="hero-description">
+          Build confidence in Robotics, Artificial Intelligence,
+          Python programming and real-world projects with
+          structured online learning for ICSE and CBSE
+          Classes 9 and 10.
+        </p>
+        <div class="button-row">
+          <a href="#courses" class="button primary">Explore Courses →</a>
+          <a href="#contact" class="button secondary">Enquire About a Batch</a>
         </div>
-
-        <div class="hero-visual">
-          <div class="robot-face">
-            <div class="robot-antenna"></div>
-            <div class="robot-eyes">
-              <span></span><span></span>
-            </div>
-            <div class="robot-mouth"></div>
-          </div>
-          <div class="floating-label label-one">🤖 Robotics</div>
-          <div class="floating-label label-two">🧠 Artificial Intelligence</div>
-          <div class="floating-label label-three">💻 Coding</div>
-        </div>
+        <p class="hero-footnote">
+          Live online learning • Guided practice • Project-based activities
+        </p>
       </div>
-    </section>
 
-    <!-- About -->
-    <section id="about" class="section">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">About Emindful_Education</span>
-          <h2>Technology Education Made Meaningful</h2>
-          <p>
-            We help school students understand Robotics and
-            Artificial Intelligence through clear explanations,
-            guided activities and structured learning.
-          </p>
+      <div class="hero-art" aria-label="Robotics and AI illustration">
+        <div class="art-circle">
+          <span class="big-robot">🤖</span>
         </div>
-
-        <div class="feature-grid">
-          <article class="feature-card">
-            <div class="feature-icon">🎯</div>
-            <h3>Concept-Based Learning</h3>
-            <p>Understand important concepts rather than simply memorising answers.</p>
-          </article>
-
-          <article class="feature-card">
-            <div class="feature-icon">🧪</div>
-            <h3>Hands-On Activities</h3>
-            <p>Explore coding exercises, AI demonstrations and virtual robotics projects.</p>
-          </article>
-
-          <article class="feature-card">
-            <div class="feature-icon">📚</div>
-            <h3>Board-Focused Support</h3>
-            <p>Learning plans can be aligned with the student's school syllabus.</p>
-          </article>
-        </div>
+        <div class="art-chip chip-one">🐍 Python</div>
+        <div class="art-chip chip-two">🧠 AI</div>
+        <div class="art-chip chip-three">⚙️ Robotics</div>
+        <div class="art-chip chip-four">💡 Projects</div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Courses -->
-    <section id="courses" class="section courses-section">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">Our Programmes</span>
-          <h2>Choose Your Learning Path</h2>
-          <p>
-            Explore regular online tuition and revision-focused
-            crash courses for ICSE and CBSE students.
-          </p>
-        </div>
+  <!-- SUBJECT SELECTOR -->
+  <section class="quick-explore">
+    <div class="container">
+      <h2>What would you like to learn?</h2>
+      <div class="subject-grid">
+        <a href="#courses" class="subject-card">
+          <span>🤖</span>
+          <strong>Robotics</strong>
+          <small>Design, circuits and simulation</small>
+        </a>
+        <a href="#courses" class="subject-card">
+          <span>🧠</span>
+          <strong>Artificial Intelligence</strong>
+          <small>AI concepts and project cycle</small>
+        </a>
+        <a href="#courses" class="subject-card">
+          <span>🐍</span>
+          <strong>Python Programming</strong>
+          <small>Code, practise and solve</small>
+        </a>
+        <a href="#tests" class="subject-card">
+          <span>📝</span>
+          <strong>Exam Preparation</strong>
+          <small>Mock tests and revision</small>
+        </a>
+      </div>
+    </div>
+  </section>
 
-        <div class="filters">
-          <select id="boardFilter" aria-label="Filter by board">
+  <!-- COURSES -->
+  <section class="section" id="courses">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">OUR PROGRAMMES</p>
+        <h2>Find the right learning programme</h2>
+        <p>
+          Select your board and class to explore available programmes.
+          Final topic alignment will follow your school's requirements.
+        </p>
+      </div>
+
+      <div class="filter-bar">
+        <label>
+          Board
+          <select id="boardFilter">
             <option value="all">All Boards</option>
             <option value="ICSE">ICSE</option>
             <option value="CBSE">CBSE</option>
           </select>
-
-          <select id="classFilter" aria-label="Filter by class">
+        </label>
+        <label>
+          Class
+          <select id="classFilter">
             <option value="all">All Classes</option>
             <option value="9">Class 9</option>
             <option value="10">Class 10</option>
           </select>
+        </label>
+      </div>
 
-          <select id="typeFilter" aria-label="Filter by course type">
-            <option value="all">All Programmes</option>
-            <option value="Tuition">Regular Tuition</option>
-            <option value="Crash Course">Crash Courses</option>
-          </select>
-        </div>
+      <div class="programme-grid" id="programmeGrid"></div>
+    </div>
+  </section>
 
-        <div class="course-grid" id="courseGrid">
-          <!-- Course cards inserted by JavaScript -->
-        </div>
-        <p id="noCourses" class="empty-state" hidden>
-          No courses match these filters.
+  <!-- TUITION -->
+  <section class="section tinted" id="tuition">
+    <div class="container two-column">
+      <div>
+        <p class="eyebrow">REGULAR ONLINE TUITION</p>
+        <h2>Build a strong foundation</h2>
+        <p>
+          Weekly guided tuition in Robotics and Artificial Intelligence,
+          supported by programming, projects and assignments.
+        </p>
+        <ul class="check-list">
+          <li>Theory for Robotics and Artificial Intelligence</li>
+          <li>Python programming</li>
+          <li>10 Tinkercad projects</li>
+          <li>Artificial Intelligence Project Cycle</li>
+          <li>Practice assignments</li>
+        </ul>
+      </div>
+      <div class="detail-panel">
+        <span class="tag">Online Tuition</span>
+        <div class="price">₹2,500 <small>/ month</small></div>
+        <p class="payment-note">₹5,000 payable in advance for 2 months</p>
+        <div class="detail-line"><span>Schedule</span><strong>Saturday or Sunday afternoon</strong></div>
+        <div class="detail-line"><span>Duration</span><strong>1.5 hours per week</strong></div>
+        <div class="detail-line"><span>Boards</span><strong>ICSE / CBSE</strong></div>
+        <div class="detail-line"><span>Classes</span><strong>9 and 10</strong></div>
+        <p class="small-note">Exact timings and joining details are provided after enquiry.</p>
+        <button class="button primary full" data-enquire="Online Tuition">
+          Enquire About Tuition →
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRASH COURSE -->
+  <section class="section" id="crash">
+    <div class="container two-column">
+      <div>
+        <p class="eyebrow">INTENSIVE LEARNING</p>
+        <h2>Crash Course</h2>
+        <p>
+          A focused two-month programme designed for students who want
+          concentrated revision and guided practical learning.
+        </p>
+        <ul class="check-list">
+          <li>Robotics and AI theory</li>
+          <li>Advanced-level Python programming</li>
+          <li>Tinkercad project activities</li>
+          <li>AI Project Cycle</li>
+          <li>Assignments and practice</li>
+        </ul>
+      </div>
+      <div class="detail-panel">
+        <span class="tag">2-Month Crash Course</span>
+        <div class="price">₹6,000 <small>/ month</small></div>
+        <p class="payment-note">₹12,000 advance payment for the full course</p>
+        <div class="detail-line"><span>Duration</span><strong>2 months</strong></div>
+        <div class="detail-line"><span>Weekly class</span><strong>1.5 hours</strong></div>
+        <div class="detail-line"><span>Mode</span><strong>Online</strong></div>
+        <div class="detail-line"><span>Boards</span><strong>ICSE / CBSE</strong></div>
+        <p class="small-note">Batch schedule and syllabus details are confirmed on enquiry.</p>
+        <button class="button primary full" data-enquire="Crash Course">
+          Enquire About Crash Course →
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOCK TESTS -->
+  <section class="section tinted" id="tests">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">ASSESSMENT CENTRE</p>
+        <h2>Mock Tests & Answer Evaluation</h2>
+        <p>
+          Choose from 10 mock-test slots. Each test is priced at
+          ₹1,000, payable before accessing the question paper.
         </p>
       </div>
-    </section>
 
-    <!-- Why Choose Us -->
-    <section id="benefits" class="section">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">Why Choose Us</span>
-          <h2>Learn, Practise and Grow</h2>
-        </div>
-
-        <div class="benefits-grid">
-          <div class="benefit-item">
-            <span>01</span>
-            <h3>Live Teacher Guidance</h3>
-            <p>Learn through interactive online sessions and guided explanations.</p>
-          </div>
-
-          <div class="benefit-item">
-            <span>02</span>
-            <h3>Regular Practice</h3>
-            <p>Strengthen understanding with exercises, quizzes and assignments.</p>
-          </div>
-
-          <div class="benefit-item">
-            <span>03</span>
-            <h3>Project-Based Learning</h3>
-            <p>Connect classroom concepts with real-world technology applications.</p>
-          </div>
-
-          <div class="benefit-item">
-            <span>04</span>
-            <h3>Focused Revision</h3>
-            <p>Prepare with topic revision, doubt-clearing and practice questions.</p>
-          </div>
-        </div>
+      <div class="notice">
+        <strong>Student access:</strong> Question papers, answer uploads
+        and corrected scripts will become available through verified
+        student accounts and payments after backend integration.
       </div>
-    </section>
 
-    <!-- Learning Process -->
-    <section class="section process-section">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">Getting Started</span>
-          <h2>Start Learning in Three Steps</h2>
-        </div>
+      <div class="test-grid" id="testGrid"></div>
 
-        <div class="steps-grid">
-          <div class="step-card">
-            <div class="step-number">1</div>
-            <h3>Choose a Course</h3>
-            <p>Select your board, class and preferred programme.</p>
-          </div>
+      <div class="workspace" id="testWorkspace">
+        <h3>Mock Test Workspace</h3>
+        <p id="selectedTest">Select a mock test to see its workspace.</p>
 
-          <div class="step-card">
-            <div class="step-number">2</div>
-            <h3>Send an Enquiry</h3>
-            <p>Share your details and ask about available batches.</p>
-          </div>
-
-          <div class="step-card">
-            <div class="step-number">3</div>
-            <h3>Join Online</h3>
-            <p>Receive joining information after enrolment is confirmed.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQs -->
-    <section id="faq" class="section">
-      <div class="container faq-container">
-        <div class="section-heading">
-          <span class="eyebrow">Frequently Asked Questions</span>
-          <h2>Questions? We Have Answers.</h2>
-        </div>
-
-        <details class="faq-item">
-          <summary>Who can enrol in these courses?</summary>
-          <p>
-            Students in Classes 9 and 10 following ICSE or CBSE
-            can enquire about suitable programmes.
-          </p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Are classes conducted online?</summary>
-          <p>
-            Yes. The programmes are designed for online learning.
-            Class platform and timings are shared during enrolment.
-          </p>
-        </details>
-
-        <details class="faq-item">
-          <summary>What is the difference between tuition and a crash course?</summary>
-          <p>
-            Regular tuition provides ongoing concept development
-            and practice. Crash courses focus on revision,
-            important topics and exam preparation.
-          </p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Do students need a robotics kit?</summary>
-          <p>
-            Some activities can be completed using virtual tools.
-            Any additional equipment requirements will be
-            communicated for the selected programme.
-          </p>
-        </details>
-
-        <details class="faq-item">
-          <summary>How can I enquire about fees and batches?</summary>
-          <p>
-            Complete the enquiry form below to send your details
-            through WhatsApp.
-          </p>
-        </details>
-      </div>
-    </section>
-
-    <!-- Enquiry Form -->
-    <section id="contact" class="section contact-section">
-      <div class="container contact-grid">
-        <div class="contact-info">
-          <span class="eyebrow">Admissions & Enquiries</span>
-          <h2>Ready to Begin Your Learning Journey?</h2>
-          <p>
-            Tell us what you would like to learn.
-            We will help you explore suitable courses,
-            batch details and enrolment options.
-          </p>
-
-          <div class="contact-highlight">
-            <h3>Enquire About</h3>
-            <p>✓ Course availability</p>
-            <p>✓ Batch timings</p>
-            <p>✓ Fees and enrolment</p>
-            <p>✓ Course content</p>
-          </div>
-        </div>
-
-        <form id="enquiryForm" class="enquiry-form">
-          <h3>Course Enquiry Form</h3>
-
-          <label for="studentName">Student Name *</label>
-          <input type="text" id="studentName" required
-            maxlength="80" placeholder="Enter student's name">
-
-          <label for="parentName">Parent / Guardian Name *</label>
-          <input type="text" id="parentName" required
-            maxlength="80" placeholder="Enter parent or guardian name">
-
-          <label for="phone">Parent / Guardian Mobile Number *</label>
-          <input type="tel" id="phone" required
-            pattern="[0-9]{10}" maxlength="10"
-            title="Enter a 10-digit Indian mobile number"
-            placeholder="10-digit mobile number">
-
-          <label for="email">Email Address (Optional)</label>
-          <input type="email" id="email"
-            placeholder="Enter email address">
-
-          <div class="form-row">
-            <div>
-              <label for="board">Board *</label>
-              <select id="board" required>
-                <option value="">Select Board</option>
-                <option value="ICSE">ICSE</option>
-                <option value="CBSE">CBSE</option>
-              </select>
-            </div>
-
-            <div>
-              <label for="studentClass">Class *</label>
-              <select id="studentClass" required>
-                <option value="">Select Class</option>
-                <option value="9">Class 9</option>
-                <option value="10">Class 10</option>
-              </select>
-            </div>
-          </div>
-
-          <label for="course">Interested Course *</label>
-          <select id="course" required>
-            <option value="">Select Course</option>
-            <option value="Robotics Tuition">Robotics Tuition</option>
-            <option value="AI Tuition">AI Tuition</option>
-            <option value="Robotics Crash Course">Robotics Crash Course</option>
-            <option value="AI Crash Course">AI Crash Course</option>
-          </select>
-
-          <label for="message">Additional Questions</label>
-          <textarea id="message" rows="4"
-            maxlength="500"
-            placeholder="Tell us about your learning requirements"></textarea>
-
-          <label class="consent-label">
-            <input type="checkbox" id="consent" required>
-            <span>
-              I am the parent/guardian or have their permission
-              to share these details for this enquiry.
-            </span>
-          </label>
-
-          <button type="submit" class="btn btn-primary full-width">
-            Send Enquiry on WhatsApp →
+        <div class="workspace-actions">
+          <button id="paperButton" class="button secondary" disabled>
+            🔒 Download Question Paper
           </button>
 
-          <p class="form-note">
-            This form opens WhatsApp with your enquiry.
-            Please review the message before sending.
+          <label class="upload-control">
+            Upload Answer Script (PDF)
+            <input type="file" id="answerUpload"
+                   accept=".pdf,application/pdf" disabled>
+          </label>
+
+          <button id="correctedButton" class="button secondary" disabled>
+            🔒 Download Corrected Script
+          </button>
+        </div>
+        <p id="testStatus" class="small-note" role="status">
+          Secure access requires payment verification and backend setup.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STUDY MATERIAL -->
+  <section class="section" id="materials">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">LEARNING RESOURCES</p>
+        <h2>Study Material Library</h2>
+        <p>
+          Organised learning resources with package-based access.
+          Prices and package contents will be published later.
+        </p>
+      </div>
+
+      <div class="material-grid" id="materialGrid"></div>
+      <div class="notice">
+        Study material downloads will be unlocked only after the
+        relevant package is purchased and payment is verified.
+      </div>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section class="section tinted" id="dashboard">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">STUDENT LEARNING AREA</p>
+        <h2>My Learning Dashboard</h2>
+        <p>
+          A preview of the student portal that will be connected
+          to your database in a later development phase.
+        </p>
+      </div>
+
+      <div class="dashboard">
+        <aside class="dashboard-sidebar">
+          <div class="avatar">🎓</div>
+          <h3>Student Portal</h3>
+          <p>Account login coming later</p>
+          <div class="dashboard-menu">
+            <span>📖 My Courses</span>
+            <span>📝 Mock Tests</span>
+            <span>📂 Study Material</span>
+            <span>📤 My Submissions</span>
+            <span>💳 Payments</span>
+          </div>
+        </aside>
+
+        <div class="dashboard-main">
+          <h3>Welcome to your learning space</h3>
+          <p>
+            After enrolment, students will be able to access
+            their purchased resources and track their learning.
           </p>
-          <p id="formStatus" class="form-status" role="status"></p>
-        </form>
+
+          <div class="dashboard-cards">
+            <div>
+              <span>📚</span>
+              <h4>My Courses</h4>
+              <p>View enrolled programmes</p>
+              <small>Backend required</small>
+            </div>
+            <div>
+              <span>📝</span>
+              <h4>My Tests</h4>
+              <p>Attempt and review tests</p>
+              <small>Backend required</small>
+            </div>
+            <div>
+              <span>📥</span>
+              <h4>My Downloads</h4>
+              <p>Access purchased materials</p>
+              <small>Backend required</small>
+            </div>
+            <div>
+              <span>📊</span>
+              <h4>My Progress</h4>
+              <p>View results and feedback</p>
+              <small>Backend required</small>
+            </div>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-content">
+  <!-- ENQUIRY -->
+  <section class="section" id="contact">
+    <div class="container contact-layout">
       <div>
-        <h3>Emindful_Education</h3>
-        <p>Empowering young minds through Robotics and AI.</p>
+        <p class="eyebrow">GET STARTED</p>
+        <h2>Enquire About Our Programmes</h2>
+        <p>
+          Share your details and preferred programme.
+          We will provide information about batches,
+          joining instructions and course availability.
+        </p>
+        <div class="contact-note">
+          <strong>Contact number:</strong> To be updated
+          <p>Enquiries currently use a local form preview.
+             Online submission will be connected later.</p>
+        </div>
       </div>
 
-      <div class="footer-links">
-        <a href="#home">Home</a>
-        <a href="#courses">Courses</a>
-        <a href="#contact">Enquire</a>
-      </div>
-    </div>
+      <form class="enquiry-form" id="enquiryForm">
+        <h3>Student Enquiry</h3>
 
-    <div class="container footer-bottom">
-      <p>© <span id="year"></span> Emindful_Education. All rights reserved.</p>
-      <p>Independent educational learning platform.</p>
-    </div>
-  </footer>
+        <label for="studentName">Student Name *</label>
+        <input id="studentName" name="studentName"
+               type="text" maxlength="80" required>
 
-  <script src="script.js"></script>
+        <label for="parentName">Parent / Guardian Name *</label>
+        <input id="parentName" name="parentName"
+               type="text" maxlength="80" required>
+
+        <label for="email">Parent / Guardian Email *</label>
+        <input id="email" name="email" type="email" required>
+
+        <label for="phone">Parent / Guardian Mobile *</label>
+        <input id="phone" name="phone" type="tel"
+               pattern="[0-9]{10}" maxlength="10" required
+               placeholder="10-digit Indian mobile number">
+
+        <div class="form-pair">
+          <div>
+            <label for="board">Board *</label>
+            <select id="board" name="board" required>
+              <option value="">Select Board</option>
+              <option>ICSE</option>
+              <option>CBSE</option>
+            </select>
+          </div>
+          <div>
+            <label for="studentClass">Class *</label>
+            <select id="studentClass" name="studentClass" required>
+              <option value="">Select Class</option>
+              <option value="9">Class 9</option>
+              <option value="10">Class 10</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="programme">Interested Programme *</label>
+        <select id="programme" name="programme" required>
+          <option value="">Select Programme</option>
+          <option>Online Tuition</option>
+          <option>Crash Course</option>
+          <option>Mock Test</option>
+          <option>Study Material</option>
+        </select>
+
+        <label for="message">Questions / Requirements</label>
+        <textarea id="message" name="message" rows="4"
+                  maxlength="600"
+                  placeholder="Tell us what you would like to know"></textarea>
+
+        <label class="consent">
+          <input type="checkbox" id="consent" required>
+          <span>I am the parent/guardian or have permission
+          to submit these details for an educational enquiry.</span>
+        </label>
+
+        <button type="submit" class="button primary full">
+          Prepare Enquiry
+        </button>
+        <p id="enquiryStatus" role="status" class="small-note"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <h3>🤖 Emindful_Education</h3>
+      <p>Learn Robotics. Explore AI. Build the Future.</p>
+      <p>For ICSE and CBSE Classes 9 & 10.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <a href="#tuition">Online Tuition</a>
+      <a href="#crash">Crash Course</a>
+      <a href="#tests">Mock Tests</a>
+      <a href="#materials">Study Material</a>
+    </div>
+    <div>
+      <h4>Information</h4>
+      <a href="#contact">Contact</a>
+      <a href="#dashboard">Student Portal</a>
+      <p>Online Learning Platform</p>
+    </div>
+  </div>
+  <div class="container copyright">
+    © <span id="currentYear"></span> Emindful_Education.
+    All rights reserved.
+  </div>
+</footer>
+
 </body>
 </html>
