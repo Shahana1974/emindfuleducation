@@ -14,20 +14,7 @@
 <header class="site-header">
   <div class="header-inner">
     <a class="brand" href="#home">
-      <span class="logo-holder" id="logoHolder">
-        <svg viewBox="0 0 48 48" aria-hidden="true">
-          <rect x="5" y="8" width="38" height="32" rx="10"
-                fill="#176b52"/>
-          <circle cx="17" cy="23" r="4" fill="white"/>
-          <circle cx="31" cy="23" r="4" fill="white"/>
-          <path d="M17 32 Q24 37 31 32" fill="none"
-                stroke="white" stroke-width="2.5"
-                stroke-linecap="round"/>
-          <path d="M24 8 V3" stroke="#176b52"
-                stroke-width="3"/>
-          <circle cx="24" cy="3" r="3" fill="#e7a83e"/>
-        </svg>
-      </span>
+      <span class="logo-holder" id="logoHolder"><img src="emindful-logo.png" alt="Emindful Education e logo"></span>
       <span>Emindful<span class="brand-accent">_Education</span></span>
     </a>
 
@@ -39,6 +26,7 @@
     <nav class="main-nav" id="mainNav" aria-label="Main navigation">
       <a href="#home">Home</a>
       <a href="#courses">Courses</a>
+      <a href="#demo">Demo Class</a>
       <a href="#tests">Mock Tests</a>
       <a href="#materials">Study Material</a>
       <a href="#dashboard">My Learning</a>
@@ -62,6 +50,7 @@
         </p>
         <div class="button-row">
           <a href="#courses" class="button primary">Explore Courses →</a>
+          <a href="#demo" class="button secondary">Try a Free Demo →</a>
           <a href="#contact" class="button secondary">Enquire About a Batch</a>
         </div>
         <p class="hero-footnote">
@@ -69,16 +58,11 @@
         </p>
       </div>
 
-      <div class="hero-art" aria-label="Robotics and AI illustration">
-        <div class="art-circle">
-          <span class="big-robot">🤖</span>
-        </div>
-        <div class="art-chip chip-one">🐍 Python</div>
-        <div class="art-chip chip-two">🧠 AI</div>
-        <div class="art-chip chip-three">⚙️ Robotics</div>
-        <div class="art-chip chip-four">💡 Projects</div>
-      </div>
-    </div>
+      <div class="hero-art">
+  <div id="robot3d"
+       aria-label="Interactive 3D educational robot">
+  </div>
+</div>
   </section>
 
   <!-- SUBJECT SELECTOR -->
@@ -142,6 +126,34 @@
       </div>
 
       <div class="programme-grid" id="programmeGrid"></div>
+    </div>
+  </section>
+
+  <!-- FREE DEMO CLASS -->
+  <section class="section demo-section tinted" id="demo">
+    <div class="container">
+      <div class="section-heading"><p class="eyebrow">INTERACTIVE DEMO CLASS · GRADES 9–10</p>
+        <h2>Build and program an obstacle-avoiding robot</h2>
+        <p>Discover how sensors, microcontrollers and motors work together. Read the lesson notes, then experiment with the complete Robotics Lab Version 5.2.</p>
+      </div>
+      <div class="demo-goals"><div><strong>1 · Observe</strong><p>Identify the Arduino Uno, HC-SR04, L298N, battery, chassis and motors.</p></div>
+      <div><strong>2 · Build</strong><p>Assemble the robot and practise simulated pin connections.</p></div>
+      <div><strong>3 · Code</strong><p>Use IF–ELSE logic to control movement based on distance.</p></div>
+      <div><strong>4 · Test</strong><p>Run obstacle challenges and explain your results.</p></div></div>
+      <div class="demo-notes"><h3>Lesson notes: How an obstacle-avoiding robot works</h3>
+      <p><strong>Input:</strong> The HC-SR04 ultrasonic sensor sends a sound pulse and measures how long the echo takes to return. Distance (cm) ≈ echo time (µs) × 0.0343 ÷ 2. We divide by 2 because the sound travels to the obstacle and back.</p>
+      <p><strong>Processing:</strong> The Arduino Uno compares the measured distance with a threshold (for example, 20 cm).</p>
+      <p><strong>Output:</strong> The Arduino signals the L298N motor driver, which controls the DC motors. When an obstacle is near, the robot can stop, reverse and turn.</p>
+      <p><strong>Safety:</strong> Motors must not be powered directly from Arduino I/O pins. Verify motor supply voltage, common ground and the manufacturer's pin diagram before building physical hardware.</p>
+      <details><summary>Classroom questions and answers</summary><ol>
+      <li>Why is a motor driver needed? <em>Motors draw more current than an Arduino output pin can safely supply.</em></li>
+      <li>What is the role of the sensor? <em>It measures the distance to nearby objects using ultrasonic echoes.</em></li>
+      <li>What does IF distance ≤ 20 cm mean? <em>The obstacle is close enough to trigger the programmed avoidance action.</em></li>
+      </ol></details></div>
+      <div class="demo-lab-head"><div><h3>Try the virtual Robotics Lab</h3><p>Use the tabs inside the simulator to explore components, assembly, coding and challenges.</p></div>
+      <a class="button secondary" href="robotics-lab.html" target="_blank" rel="noopener">Open Full Screen ↗</a></div>
+      <iframe class="demo-frame" src="robotics-lab.html" title="Robotics Lab Version 5.2 interactive simulator" loading="lazy" allowfullscreen></iframe>
+      <p class="small-note">This educational simulation is a simplified model, not a replacement for testing real circuits. The embedded simulator works offline with the downloaded website files.</p>
     </div>
   </section>
 
@@ -431,7 +443,7 @@
 <footer class="footer">
   <div class="container footer-grid">
     <div>
-      <h3>🤖 Emindful_Education</h3>
+      <h3>Emindful_Education</h3>
       <p>Learn Robotics. Explore AI. Build the Future.</p>
       <p>For ICSE and CBSE Classes 9 & 10.</p>
     </div>
@@ -453,7 +465,29 @@
     © <span id="currentYear"></span> Emindful_Education.
     All rights reserved.
   </div>
+  <p class="small-note" style="text-align:center;">
+  3D robot model:
+  <a href="https://sketchfab.com/3d-models/aula-32-chassi-2wd-robo-kit-2023-91319184ddff4873b6d8a0991e52ed83"
+     target="_blank" rel="noopener noreferrer">
+    Aula 32 - Chassi 2WD Robô - Kit 2023
+  </a>
+  by Robótica Paraná,
+  licensed under
+  <a href="https://creativecommons.org/licenses/by/4.0/"
+     target="_blank" rel="noopener noreferrer">
+    CC BY 4.0
+  </a>.
+  Displayed with website animation and scaling.
+</p>
 </footer>
-
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/"
+  }
+}
+</script>
+<script type="module" src="robot-3d.js"></script>
 </body>
 </html>

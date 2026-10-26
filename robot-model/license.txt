@@ -1,0 +1,11 @@
+Model Information:
+* title:	Aula 32 - Chassi 2WD Robô - Kit 2023
+* source:	https://sketchfab.com/3d-models/aula-32-chassi-2wd-robo-kit-2023-91319184ddff4873b6d8a0991e52ed83
+* author:	Robótica Paraná (https://sketchfab.com/roboticaparana)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Aula 32 - Chassi 2WD Robô - Kit 2023" (https://sketchfab.com/3d-models/aula-32-chassi-2wd-robo-kit-2023-91319184ddff4873b6d8a0991e52ed83) by Robótica Paraná (https://sketchfab.com/roboticaparana) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

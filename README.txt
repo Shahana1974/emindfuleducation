@@ -1,0 +1,1 @@
+Emindful Education website preview. Open index.html in Chrome. Demo Class includes Robotics Lab V5.2. To publish to GitHub Pages, upload all files in this folder to the repository root. Existing enquiry, payments, and student account features are not connected to a backend. The 3D-style robot is a CSS animation, not a 3D CAD model.
