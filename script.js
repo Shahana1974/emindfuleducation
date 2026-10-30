@@ -313,8 +313,10 @@ document.querySelectorAll("[data-enquire]").forEach(button => {
 
 const enquiryForm = document.getElementById("enquiryForm");
 const enquiryStatus = document.getElementById("enquiryStatus");
+const ENQUIRY_WEBHOOK_URL =
+  "https://emindfuledu123-n.app.n8n.cloud/webhook/emindful-student-enquiry";
 
-enquiryForm.addEventListener("submit", event => {
+enquiryForm.addEventListener("submit", async event => {
   event.preventDefault();
 
   if (!enquiryForm.reportValidity()) return;
@@ -338,68 +340,46 @@ enquiryForm.addEventListener("submit", event => {
     return;
   }
 
-  const message = [
-    "Hello Emindful_Education,",
-    "I would like to enquire about a programme.",
-    "",
-    `Student: ${enquiry.studentName}`,
-    `Parent/Guardian: ${enquiry.parentName}`,
-    `Email: ${enquiry.email}`,
-    `Phone: ${enquiry.phone}`,
-    `Board: ${enquiry.board}`,
-    `Class: ${enquiry.classLevel}`,
-    `Programme: ${enquiry.programme}`,
-    `Questions: ${enquiry.message || "None"}`,
-    "",
-    "Please share the batch and enrolment details."
-  ].join("\n");
+  
+  // Submit student enquiry to n8n
+  enquiryStatus.textContent = "Submitting your enquiry...";
 
-  // Optional WhatsApp enquiry once a number is provided.
-  if (/^[1-9]\d{9,14}$/.test(CONFIG.whatsappNumber)) {
-    const url =
-      `https://wa.me/${CONFIG.whatsappNumber}?text=` +
-      encodeURIComponent(message);
+  const submitButton = enquiryForm.querySelector(
+    'button[type="submit"]'
+  );
+
+  if (submitButton) submitButton.disabled = true;
+
+  try {
+    const response = await fetch(ENQUIRY_WEBHOOK_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(enquiry)
+    });
+
+    if (!response.ok) {
+      throw new Error(`Submission failed: ${response.status}`);
+    }
 
     enquiryStatus.textContent =
-      "Opening WhatsApp. Please review and send your enquiry.";
+      "Thank you! Your enquiry has been submitted successfully. " +
+      "We will contact you shortly.";
 
-    window.open(url, "_blank", "noopener,noreferrer");
-    return;
+    enquiryForm.reset();
+
+  } catch (error) {
+    console.error("Enquiry submission error:", error);
+
+    enquiryStatus.textContent =
+      "Sorry, your enquiry could not be submitted. " +
+      "Please try again later.";
+
+  } finally {
+    if (submitButton) submitButton.disabled = false;
   }
 
-  // No backend and no WhatsApp configured.
-  // Allow the visitor to copy the enquiry.
-  // No personal information is stored in the browser.
-
-  enquiryStatus.replaceChildren();
-
-  const text = makeElement(
-    "p", "",
-    "Online submission is not active yet. " +
-    "You can copy your enquiry below."
-  );
-
-  const copyButton = makeElement(
-    "button", "button secondary", "Copy Enquiry"
-  );
-  copyButton.type = "button";
-
-  copyButton.addEventListener("click", async () => {
-    try {
-      await navigator.clipboard.writeText(message);
-      copyButton.textContent = "Copied!";
-    } catch {
-      enquiryStatus.appendChild(
-        makeElement(
-          "p", "",
-          "Clipboard unavailable. Please use the form details " +
-          "to contact us when contact information is published."
-        )
-      );
-    }
-  });
-
-  enquiryStatus.append(text, copyButton);
 });
 
 // ===========================================
